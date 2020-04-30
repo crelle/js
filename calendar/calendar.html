@@ -18,8 +18,11 @@
   </style>
 </head>
 <body>
-<span id="testView"></span>
-<div id="test2"></div>
+
+<h2 id="title">督办日历</h2>
+<div id="calendar"></div>
+<h2 id="bottom">督办详情</h2>
+<span id="note"></span>
 
 
 
@@ -27,20 +30,24 @@
 <script>
 //嵌套在指定容器中
 laydate.render({
-  elem: '#test2'
+  elem: '#calendar'
   ,position: 'static'
   ,change: function(value, date){ //监听日期被切换
-    lay('#testView').html(value);
+    // lay('#note').html("");
   }
   ,showBottom: false
   ,theme: 'molv'
   ,mark: {
     '2020-04-18': ''
-    ,'2020-04-15': '' //每年12月31日
+    ,'2020-04-15': ''
   }
   ,done: function(value, date){
     if(date.date === 15){ //点击2017年8月15日，弹出提示语
-      alert(date)
+      lay('#note').html("你与2020年4月17日的业扩结存工单进行督办，全省共督办259条工单，其中结存60天以上的工单64条，结存30天至60天的工单195条，结存30天以内工单0条。");
+    }else if(date.date === 18){
+      lay('#note').html("生日快乐!");
+    }else{
+      lay('#note').html("");
     }
   }
 });
